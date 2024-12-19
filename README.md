@@ -10,6 +10,8 @@ Quartus prime
 
 **THEORY**
 
+A SISO (Serial-In Serial-Out) Shift Register is a sequential logic circuit used for data storage and transfer. It takes input data serially, shifts it through a chain of flip-flops at every clock pulse, and outputs the data serially. This makes it suitable for applications requiring data serialization or delay.
+
 **SISO shift Register**
 
 A Serial-In Serial-Out shift register is a sequential logic circuit that allows data to be shifted in and out one bit at a time in a serial manner. It consists of a cascade of flip-flops connected in series, forming a chain. The input data is applied to the first flip-flop in the chain, and as the clock pulses, the data propagates through the flip-flops, ultimately appearing at the output.
@@ -25,18 +27,57 @@ Each D flip-flop in the circuit has a Data (D) input, a Clock (CLK) input, and a
 
 **Procedure**
 
-/* write all the steps invloved */
+Step1: Define the specifications and initialize the design.
+Step2: Declare the name of the entity and architecture by using VHDL source code.
+Step3: Write the source code in VERILOG.
+Step4: Check the syntax and debug the errors if found, obtain the synthesis report.
+Step5: Verify the output by simulating the source code.
+Step6: Write all possible combinations of input using the test bench.
+Step7: Obtain the place and route report. 
+
 
 **PROGRAM**
 
-/* Program for flipflops and verify its truth table in quartus using Verilog programming.
+Program for flipflops and verify its truth table in quartus using Verilog programming.
 
-Developed by: RegisterNumber:
+```
+module siso(din, clk, rst, dout);
+ input din;
+ input clk;
+ input rst;
+ output dout;
+reg dout;
+reg [7:0]x;
+always @ (posedge(clk) or posedge(rst)) begin
+if (rst==1'b1)
+begin
+dout=8'hzz;
+end
+else
+begin
+x={x[6:0],din};
+dout=x[7];
+end
+end
+endmodule
 
-*/
+```
+
+Developed by: Nanda Kishor S P
+RegisterNumber: 24011485
+
 
 **RTL LOGIC FOR SISO Shift Register**
 
+![Screenshot (108)](https://github.com/user-attachments/assets/074a12e8-4101-4001-985a-79369e568cdc)
+
+
 **TIMING DIGRAMS FOR SISO Shift Register**
 
+![Screenshot (109)](https://github.com/user-attachments/assets/c6724ab0-9a6a-41af-83a5-4c186ed410fb)
+
+
 **RESULTS**
+
+Thus the OUTPUT’s of 8-bit shift register are verified by synthesizing and simulating the
+VERILOG code.
